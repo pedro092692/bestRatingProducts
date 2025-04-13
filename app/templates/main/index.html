@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Top Cremas Antiarrugas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Top 10 Cremas Antiarrugas</h1>
+    <div class="productos">
+        {% for producto in productos %}
+        <div class="card">
+            <img src="">
+            <h2>Nombre del producto</h2>
+            <p>Descripcion del producto</p>
+            <a href="">Ver detalles</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
