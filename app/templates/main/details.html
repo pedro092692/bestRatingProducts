@@ -9,5 +9,16 @@
 </head>
 <body>
     <h2>Welcome to products details...</h2>
+        <ul>
+            {% for item in products %}
+                <li>
+                    {{ item.name }}
+                    <img src="{{ item.img_url }}" alt="" height="60">
+                    <h3>Marca:</h3>{{ item.brand }}
+                    <a href="{{ item.url }}" target="_blank">Ver En Amazon</a>
+                    <h3>Precio:</h3>{{ item.price }}
+                </li>
+            {% endfor %}
+        </ul>
 </body>
 </html>

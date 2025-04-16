@@ -1,5 +1,5 @@
-import amazon_paapi.errors
 from amazon_paapi import AmazonApi
+from flask import jsonify
 import os
 
 
@@ -21,17 +21,17 @@ class ProductService:
         products_info = []
         for item in products.items:
             products_info.append({
-                'product_name': item.item_info.title.display_value,
-                'product_url': item.detail_page_url,
-                'image_url': item.images.primary.large.url,
-                'user_review': item.customer_reviews,
-                'product_price': item.offers.listings[0].price.amount,
+                'name': item.item_info.title.display_value,
+                'url': item.detail_page_url,
+                'img_url': item.images.primary.large.url,
+                'review': item.customer_reviews,
+                'price': item.offers.listings[0].price.amount,
                 'brand': item.item_info.by_line_info.brand.display_value
             })
             try:
-                products_info[-1]['product_features'] = item.item_info.features.display_values
+                products_info[-1]['features'] = item.item_info.features.display_values
             except AttributeError:
-                products_info[-1]['product_features'] = []
+                products_info[-1]['features'] = []
 
-        print(products_info)
+        return products_info
 
